@@ -12,6 +12,20 @@
 
 可以看到一个命令行窗口，命令行的前面显示```(base)```，代表anaconda的base虚拟环境处于激活状态，也代表你的安装正常完成了
 
+* 添加conda的国内源
+
+完成anaconda的安装后，还需通过执行下面的命令添加conda的国内源（清华）：
+
+```conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/```
+
+```conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/```
+
+```conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/```
+
+当从conda下载的时候，会优先搜索上面添加的国内源服务器，保证下载速度。
+
+可以通过```conda config --show channels```命令查看添加是否成功。
+
 ### 安装Git工具
 
 * Git是一种版本管理工具，在本项目中，我们主要是使用它抓取开源代码，并构建我们的运行环境
@@ -61,6 +75,24 @@
 ***注意：下面的操作都需要在whisper虚拟环境下进行***
 
 输入```python --version```检查python环境是否正常安装完成
+
+* 添加python的包管理器pip工具的国内源
+
+同样，输入```pip --version```检查pip工具否正常安装完成以及它的版本号是否正确。
+
+一般来说，pip工具的版本号需要大于21（对应python 3.9）
+
+我们使用下面两行代码为pip添加国内源（清华）：
+
+```pip config --global set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple```
+
+```pip config --global set install.trusted-host tuna.tsinghua.edu.cn```
+
+但添加成功后，命令行会反馈配置写入到一个pip.ini文件中，可以打开该文件检查是否添加成功
+
+或者使用```pip config list```指令查看。
+
+当从pip下载的时候，会优先搜索上面添加的国内源服务器，保证下载速度。
 
 * 接下来，我们使用Git工具从网络上下载whisper代码
 
